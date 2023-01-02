@@ -1,3 +1,4 @@
 discord-bot.iml
 .idea
 node_modules
+.env
