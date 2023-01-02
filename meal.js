@@ -49,15 +49,16 @@ exports.addMeal = (message, args) => {
     // })
     const meal = args.join(' ');
     if (meal === '') { return; }
-    
+
     db.get(meal).then(value => {
-        message.channel.send(`${meal} already exists!`);
-        return;
-    });
-    
-    db.set(meal, meal).then(() => {
-        message.channel.send(`${meal} has been added to meal list!`);
-        return;
+        if (value !== null) {
+            message.channel.send(`${meal} already exists!`);
+            return;
+        }
+        db.set(meal, meal).then(() => {
+            message.channel.send(`${meal} has been added to meal list!`);
+            return;
+        });
     });
 }
 
