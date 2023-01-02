@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-    connectionString: 'postgresql://bocchi_admin:bocchi1q2w3e!@localhost:5432/bocchi_db',
+    connectionString: process.env.CONNECTION_STRING,
 });
 
 exports.meal = (message) => {
