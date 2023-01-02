@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({
     intents: [
@@ -9,7 +11,7 @@ const client = new Client({
     ],
 });
 
-client.login('MTA1OTI3NzAzNTE0MDI5NjczNA.GB4lak.-0y5M8qpAy3sa-bCZaIkrkQmGk68pKKuoanBDY');
+client.login(process.env.TOKEN);
 
 client.on('messageCreate', message => {
     if (message.author.bot) return;
