@@ -27,6 +27,9 @@ client.on('messageCreate', message => {
     if (command === 'addmeal') {
         meal.addMeal(message, args);
     }
+    if (command === 'removemeal') {
+        meal.removeMeal(message, args);
+    }
     if (command === 'meallist') {
         meal.mealList(message);
     }

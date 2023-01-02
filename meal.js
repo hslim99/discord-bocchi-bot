@@ -10,6 +10,10 @@ exports.meal = (message) => {
             throw err;
         }
         const meals = res.rows;
+        if (meals.length === 0) {
+            message.channel.send(`There is no meal in list!`);
+            return;
+        }
         const meal = meals[Math.floor(Math.random() * meals.length)].name;
         message.channel.send(`How about ${meal}?`);
     })
@@ -17,11 +21,30 @@ exports.meal = (message) => {
 
 exports.addMeal = (message, args) => {
     const meal = args.join(' ');
-    pool.query(`INSERT INTO meals (name) VALUES ('${meal}')`, (err, res) => {
+    pool.query(`SELECT name FROM meals WHERE name = '${meal}'`, (err, res) => {
         if (err) {
             throw err;
         }
-        message.channel.send(`${meal} has been added to meal list!`);
+        if (res.rows.length === 0) {
+            pool.query(`INSERT INTO meals (name) VALUES ('${meal}') ON CONFLICT (name) DO NOTHING`, (err, res) => {
+                if (err) {
+                    throw err;
+                }
+                message.channel.send(`${meal} has been added to meal list!`);
+            })
+            return;
+        }
+        message.channel.send(`${meal} already exists!`);
+    })
+}
+
+exports.removeMeal = (message, args) => {
+    const meal = args.join(' ');
+    pool.query(`DELETE FROM meals WHERE name = '${meal}'`, (err, res) => {
+        if (err) {
+            throw err;
+        }
+        message.channel.send(`${meal} has been removed from meal list!`);
     })
 }
 
