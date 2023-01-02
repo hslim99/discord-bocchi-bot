@@ -10,6 +10,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
+const meal = require('./meal');
 
 client.login(process.env.TOKEN);
 
@@ -21,21 +22,19 @@ client.on('messageCreate', message => {
     const command = args.shift().toLowerCase();
 
     if (command === 'meal') {
-        const meal = meals[Math.floor(Math.random() * meals.length)];
-        message.channel.send(`How about ${meal}?`);
+        meal.meal(message);
     }
-
-    console.log(args);
-
     if (command === 'addmeal') {
-        meals.push(args[0]);
-        console.log(meals);
-        message.channel.send(`${args[0]} has been added to meal list!`);
+        meal.addMeal(message, args);
+    }
+    if (command === 'meallist') {
+        meal.mealList(message);
+    }
+    if (command === '켁븜') {
+        message.channel.send(`헤롱헤롱쿨쿨켁켁븜냐냥븜로롱꿈나라둥둥쯉쯉븜구리븜미응애`);
     }
 });
 
 client.on('ready', () => {
     console.log(`${client.user.tag}에 로그인하였습니다!`);
 });
-
-const meals = ['Hamburger'];
