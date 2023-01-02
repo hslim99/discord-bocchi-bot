@@ -5,7 +5,7 @@ const pool = new Pool({
 });
 
 exports.meal = (message) => {
-    pool.query('SELECT name FROM meal', (err, res) => {
+    pool.query('SELECT name FROM meals', (err, res) => {
         if (err) {
             throw err;
         }
@@ -17,7 +17,7 @@ exports.meal = (message) => {
 
 exports.addMeal = (message, args) => {
     const meal = args.join(' ');
-    pool.query(`INSERT INTO meal (name) VALUES ('${meal}')`, (err, res) => {
+    pool.query(`INSERT INTO meals (name) VALUES ('${meal}')`, (err, res) => {
         if (err) {
             throw err;
         }
@@ -27,7 +27,7 @@ exports.addMeal = (message, args) => {
 
 exports.mealList = (message) => {
     let mealString = ``;
-    pool.query(`SELECT name FROM meal`, (err, res) => {
+    pool.query(`SELECT name FROM meals`, (err, res) => {
         if (err) {
             throw err;
         }
