@@ -21,6 +21,7 @@ exports.meal = (message) => {
 
 exports.addMeal = (message, args) => {
     const meal = args.join(' ');
+    if (meal === '') { return; }
     pool.query(`SELECT name FROM meals WHERE name = '${meal}'`, (err, res) => {
         if (err) {
             throw err;
@@ -40,6 +41,7 @@ exports.addMeal = (message, args) => {
 
 exports.removeMeal = (message, args) => {
     const meal = args.join(' ');
+    if (meal === '') { return; }
     pool.query(`DELETE FROM meals WHERE name = '${meal}'`, (err, res) => {
         if (err) {
             throw err;
