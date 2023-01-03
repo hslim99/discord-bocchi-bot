@@ -43,7 +43,7 @@ client.on('messageCreate', (message) => {
   if (command === '켁븜') {
     message.channel.send(`헤롱헤롱쿨쿨켁켁븜냐냥븜로롱꿈나라둥둥쯉쯉븜구리븜미응애`);
   }
-  replacer.reactGeun(message);
+  react.reactGeun(message);
 });
 
 client.on('ready', () => {
