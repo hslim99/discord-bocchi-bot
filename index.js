@@ -10,13 +10,19 @@ const client = new Client({
         GatewayIntentBits.MessageContent,
     ],
 });
+const { Pool } = require('pg');
+exports.pool = new Pool({
+    connectionString: process.env.CONNECTION_STRING,
+});
 const meal = require('./meal');
 
 client.login(process.env.TOKEN);
 
 client.on('messageCreate', message => {
     if (message.author.bot) return;
-    if (!message.content.startsWith('!')) return;
+    if (!message.content.startsWith('!')) {
+        return;
+    }
 
     const args = message.content.slice(1).split(' ');
     const command = args.shift().toLowerCase();
