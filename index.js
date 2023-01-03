@@ -15,12 +15,14 @@ exports.pool = new Pool({
     connectionString: process.env.CONNECTION_STRING,
 });
 const meal = require('./meal');
+const react = require('./react');
 
 client.login(process.env.TOKEN);
 
 client.on('messageCreate', message => {
     if (message.author.bot) return;
     if (!message.content.startsWith('!')) {
+        react.reactGeun(message);
         return;
     }
 
@@ -42,6 +44,7 @@ client.on('messageCreate', message => {
     if (command === '켁븜') {
         message.channel.send(`헤롱헤롱쿨쿨켁켁븜냐냥븜로롱꿈나라둥둥쯉쯉븜구리븜미응애`);
     }
+    replacer.reactGeun(message);
 });
 
 client.on('ready', () => {
