@@ -20,6 +20,7 @@ exports.pool = new Pool({
 });
 const meal = require('./meal');
 const react = require('./react');
+const util = require('./util');
 
 client.login(process.env.TOKEN);
 
@@ -51,6 +52,9 @@ client.on('messageCreate', (message) => {
   }
   if (command === '헉븜') {
     message.channel.send(`헉븜켁븜싹븜븜데렐루도동도동가제일귀여운건누구바로븜미짱도동가동가`);
+  }
+  if (command === 'random') {
+    util.random(message, args);
   }
   react.reactGeun(message);
 });
