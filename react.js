@@ -6,8 +6,8 @@ exports.reactGeun = (message) => {
 };
 
 exports.reactQuestion = (message) => {
-  const str = message.content.replace(/\?/g, '');
-  if (str === '' && message.content.length > 0) {
+  const regex = /^\?+$/;
+  if (regex.test(message.content)) {
     message.channel.send(`?`);
   }
 };
