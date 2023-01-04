@@ -19,6 +19,7 @@ exports.pool = new Pool({
   database: process.env.DB_NAME,
 });
 const meal = require('./meal');
+const call = require('./call');
 const react = require('./react');
 const util = require('./util');
 
@@ -46,6 +47,9 @@ client.on('messageCreate', (message) => {
   }
   if (command === 'meallist') {
     meal.mealList(message);
+  }
+  if (command === 'call') {
+    call.call(message, args, client);
   }
   if (command === '켁븜') {
     message.channel.send(`헤롱헤롱쿨쿨켁켁븜냐냥븜로롱꿈나라둥둥쯉쯉븜구리븜미응애`);
