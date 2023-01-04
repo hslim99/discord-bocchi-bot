@@ -9,11 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Deploy to EC2
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        uses: appleboy/ssh-action@master
         with:
-          instance_id: i-0867a0c000044f916
-          region: ap-northeast-2
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secret.EC2_USERNAME }}
+          private_key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            cd /discord-bocchi-app
+            git remote updatae
+            git pull origin master
+            npm install
