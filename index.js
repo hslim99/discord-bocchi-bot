@@ -28,7 +28,6 @@ client.on('messageCreate', (message) => {
   if (!message.content.startsWith('!')) {
     react.reactGeun(message);
     react.reactQuestion(message);
-    react.reactBHJ(message);
     return;
   }
 

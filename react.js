@@ -11,9 +11,3 @@ exports.reactQuestion = (message) => {
     message.channel.send(`?`);
   }
 };
-
-exports.reactBHJ = (message) => {
-  if (message.content === '아') {
-    message.channel.send(`와타시노코이와`);
-  }
-};
