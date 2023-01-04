@@ -19,6 +19,6 @@ jobs:
           script: |
             cd discord-bocchi-bot/
             git reset --hard
-            git remote updatae
+            git remote update
             git pull origin master
             npm install
