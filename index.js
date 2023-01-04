@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({
   intents: [
@@ -19,7 +21,6 @@ exports.pool = new Pool({
 const meal = require('./meal');
 const react = require('./react');
 
-require('dotenv').config();
 client.login(process.env.TOKEN);
 
 client.on('messageCreate', (message) => {
