@@ -48,6 +48,9 @@ client.on('messageCreate', (message) => {
   if (command === '켁븜') {
     message.channel.send(`헤롱헤롱쿨쿨켁켁븜냐냥븜로롱꿈나라둥둥쯉쯉븜구리븜미응애`);
   }
+  if (command === '헉븜') {
+    message.channel.send(`헉븜켁븜싹븜븜데렐루도동도동가제일귀여운건누구바로븜미짱도동가동가`);
+  }
   react.reactGeun(message);
 });
 
