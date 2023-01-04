@@ -4,3 +4,10 @@ exports.reactGeun = (message) => {
     message.react(emoji);
   }
 };
+
+exports.reactQuestion = (message) => {
+  const str = message.content.replace(/\?/g, '');
+  if (str === '' && message.content.length > 0) {
+    message.channel.send(`?`);
+  }
+};
