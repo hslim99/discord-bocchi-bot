@@ -27,6 +27,8 @@ client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   if (!message.content.startsWith('!')) {
     react.reactGeun(message);
+    react.reactQuestion(message);
+    react.reactBHJ(message);
     return;
   }
 
