@@ -22,3 +22,4 @@ jobs:
             git remote update
             git pull origin master
             npm install
+            whoami
