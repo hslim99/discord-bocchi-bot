@@ -66,3 +66,9 @@ client.on('messageCreate', (message) => {
 client.on('ready', () => {
   console.log(`${client.user.tag}에 로그인하였습니다!`);
 });
+
+const cron = require('cron');
+const job = new cron.CronJob('01 57 15 * * *', () => {
+  client.channels.cache.get('1057498298363166723').send(`1557`);
+}, timeZone='Asia/Seoul');
+job.start();
