@@ -22,6 +22,7 @@ const meal = require('./meal');
 const call = require('./call');
 const react = require('./react');
 const util = require('./util');
+const image = require('./image');
 
 client.login(process.env.TOKEN);
 
@@ -34,7 +35,7 @@ client.on('messageCreate', (message) => {
   }
 
   const args = message.content.slice(1).split(' ');
-  const command = args.shift().toLowerCase();
+  const command = args[0].toLowerCase();
 
   if (command === 'meal') {
     meal.meal(message);
@@ -59,6 +60,18 @@ client.on('messageCreate', (message) => {
   }
   if (command === 'random') {
     util.random(message, args);
+  }
+  if (command === 'upload') {
+    image.saveImage(message);
+  }
+  if (command === 'image') {
+    image.sendImage(message);
+  }
+  if (command === 'listimage') {
+    image.listImage(message, args[1]);
+  }
+  if (command === 'removeimage') {
+    image.removeImage(message, args[1]);
   }
   react.reactGeun(message);
 });
