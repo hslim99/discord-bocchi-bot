@@ -22,6 +22,10 @@ exports.saveImage = async (message) => {
     );
   }
 
+  if (!fs.existsSync(imageDirectory)) {
+    fs.mkdirSync(imageDirectory);
+  }
+
   const fileName = `image_${Date.now()}_${path.basename(attachmentURL).split('?')[0]}`;
   const filePath = path.join(__dirname, imageDirectory, fileName);
 
