@@ -22,6 +22,11 @@ exports.saveImage = async (message) => {
     );
   }
 
+  const maxSizeBytes = 5 * 1024 * 1024;
+  if (attachment.size > maxSizeBytes) {
+    return message.reply('Image size exceeds the maximum allowed size of 5MB.');
+  }
+
   if (!fs.existsSync(imageDirectory)) {
     fs.mkdirSync(imageDirectory);
   }
