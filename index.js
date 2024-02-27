@@ -34,8 +34,8 @@ client.on('messageCreate', (message) => {
     return;
   }
 
-  const args = message.content.slice(1).split(' ');
-  const command = args[0].toLowerCase();
+  const command = message.content.slice(1).split(' ')[0].toLowerCase();
+  const args = message.content.slice(1).split(' ').slice(1);
 
   if (command === 'meal') {
     meal.meal(message);
