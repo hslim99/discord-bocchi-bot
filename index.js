@@ -26,7 +26,7 @@ const image = require('./image');
 
 client.login(process.env.TOKEN);
 
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
   if (!message.content.startsWith('!')) {
     react.reactGeun(message);
@@ -67,7 +67,12 @@ client.on('messageCreate', (message) => {
     util.random(message, args);
   }
   if (command === 'upload') {
-    image.saveImage(message);
+    if (message.reference && message.reference.messageId) {
+      const repliedMessage = await message.channel.messages.fetch(message.reference.messageId);
+      image.saveImage(repliedMessage);
+    } else {
+      image.saveImage(message);
+    }
   }
   if (command === 'image') {
     image.sendImage(message);
