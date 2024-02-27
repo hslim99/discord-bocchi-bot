@@ -22,8 +22,8 @@ exports.addMeal = (message, args) => {
   }
   pool.query(
     `SELECT name
-                FROM meals
-                WHERE name = '${meal}'`,
+     FROM meals
+     WHERE name = '${meal}'`,
     (err, res) => {
       if (err) {
         throw err;
@@ -31,7 +31,7 @@ exports.addMeal = (message, args) => {
       if (res.rows.length === 0) {
         pool.query(
           `INSERT INTO meals (name)
-                        VALUES ('${meal}') ON CONFLICT (name) DO NOTHING`,
+           VALUES ('${meal}') ON CONFLICT (name) DO NOTHING`,
           (err, res) => {
             if (err) {
               throw err;
@@ -53,8 +53,8 @@ exports.removeMeal = (message, args) => {
   }
   pool.query(
     `DELETE
-                FROM meals
-                WHERE name = '${meal}'`,
+     FROM meals
+     WHERE name = '${meal}'`,
     (err, res) => {
       if (err) {
         throw err;
@@ -68,7 +68,7 @@ exports.mealList = (message) => {
   let mealString = ``;
   pool.query(
     `SELECT name
-                FROM meals`,
+     FROM meals`,
     (err, res) => {
       if (err) {
         throw err;

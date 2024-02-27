@@ -8,8 +8,8 @@ exports.call = (message, args, client) => {
     }
     const user = client.users.cache.get(matches[1]);
     if (user) {
-			users.push(mention);
-		}
+      users.push(mention);
+    }
   }
 
   if (users.length > 0) {
