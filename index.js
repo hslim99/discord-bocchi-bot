@@ -78,10 +78,10 @@ client.on('messageCreate', async (message) => {
     image.sendImage(message);
   }
   if (command === 'listimage') {
-    image.listImage(message, args[1]);
+    image.listImage(message, args[0]);
   }
   if (command === 'removeimage') {
-    image.removeImage(message, args[1]);
+    image.removeImage(message, args[0]);
   }
   react.reactGeun(message);
 });
